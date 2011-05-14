@@ -1,0 +1,16 @@
+[% WRAPPER 'include/layout.tt' %]
+
+<form method="post" action="[% uri_for('/post') %]">
+    <textarea name="body"></textarea>
+    <input type="submit" value="POST" />
+</form>
+
+%% FOR ent IN entries
+%% SET id = ent.entry_id;
+<div id="entry[% id %]">
+    <p><a href="[% uri_for('/#' ~ id) %]">#[% id %]</a></p>
+    <pre>[% ent.body %]<pre>
+</div>
+%% END # for
+
+[% END %]
